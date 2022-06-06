@@ -1,35 +1,43 @@
 import { useRecoilState, useSetRecoilState, useResetRecoilState } from 'recoil';
 
 import { history, useFetchWrapper } from '_helpers';
-import {authAtom, usersAtom, userAtom, localesAtom} from '_state';
+import {authAtom, usersAtom, userAtom, localesAtom, eventosAtom} from '_state';
 
 export { useUserActions };
 
 function useUserActions () {
     const baseUrl = `${process.env.REACT_APP_API_URL}/users`;
     const localesUrl = `${process.env.REACT_APP_API_URL}/locales`;
+    const eventosUrl = `${process.env.REACT_APP_API_URL}/eventos`;
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authAtom);
     const setUsers = useSetRecoilState(usersAtom);
     const setUser = useSetRecoilState(userAtom);
     const setLocales = useSetRecoilState(localesAtom);
+    const setEventos = useSetRecoilState(eventosAtom);
 
     return {
         login,
         logout,
         register,
         registerLocal,
+        registerEvento,
         updateLocal,
+        updateEvento,
         getAll,
         getAllLocales,
+        getAllEventos,
         getById,
         getByIdLocales,
+        getByIdEventos,
         update,
         deleteUser,
         deleteLocales,
+        deleteEventos,
         resetUsers: useResetRecoilState(usersAtom),
         resetUser: useResetRecoilState(userAtom),
-        resetLocales: useResetRecoilState(localesAtom)
+        resetLocales: useResetRecoilState(localesAtom),
+        resetEventos: useResetRecoilState(eventosAtom)
     }
 
     function login({ username, password }) {
@@ -60,6 +68,10 @@ function useUserActions () {
         return fetchWrapper.post(`${localesUrl}/registrar`, locales);
     }
 
+    function registerEvento(eventos) {
+        return fetchWrapper.post(`${localesUrl}/registrar`, eventos);
+    }
+
     // GETTERS
     function getAll() {
         return fetchWrapper.get(baseUrl).then(setUsers);
@@ -69,12 +81,20 @@ function useUserActions () {
         return fetchWrapper.get(localesUrl).then(setLocales);
     }
 
+    function getAllEventos() {
+        return fetchWrapper.get(eventosUrl).then(setEventos);
+    }
+
     function getById(id) {
         return fetchWrapper.get(`${baseUrl}/${id}`).then(setUser);
     }
 
     function getByIdLocales(id) {
         return fetchWrapper.get(`${localesUrl}/${id}`).then(setLocales);
+    }
+
+    function getByIdEventos(id) {
+        return fetchWrapper.get(`${eventosUrl}/${id}`).then(setEventos);
     }
 
     function update(id, params) {
@@ -95,6 +115,13 @@ function useUserActions () {
 
     function updateLocal(id, params) {
         return fetchWrapper.put(`${localesUrl}/${id}`, params)
+            .then(x => {
+                return x;
+            });
+    }
+
+    function updateEvento(id, params) {
+        return fetchWrapper.put(`${eventosUrl}/${id}`, params)
             .then(x => {
                 return x;
             });
@@ -135,6 +162,22 @@ function useUserActions () {
             .then(() => {
                 // remove user from list after deleting
                 setLocales(locales => locales.filter(x => x.id !== id));
+            });
+    }
+
+    function deleteEventos(id) {
+        setEventos(eventos => eventos.map(x => {
+            // add isDeleting prop to user being deleted
+            if (x.id === id)
+                return { ...x, isDeleting: true };
+
+            return x;
+        }));
+
+        return fetchWrapper.delete(`${eventosUrl}/${id}`)
+            .then(() => {
+                // remove user from list after deleting
+                setEventos(eventos => eventos.filter(x => x.id !== id));
             });
     }
 }

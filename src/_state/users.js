@@ -20,9 +20,21 @@ const localAtom = atom({
     default: null
 });
 
+const eventosAtom = atom({
+    key: 'eventos',
+    default: null
+});
+
+const eventoAtom = atom({
+    key: 'evento',
+    default: null
+});
+
 export { 
     usersAtom,
     userAtom,
     localesAtom,
-    localAtom
+    localAtom,
+    eventosAtom,
+    eventoAtom
 };
