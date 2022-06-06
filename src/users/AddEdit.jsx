@@ -86,25 +86,25 @@ function AddEdit({ history, match }) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>First Name</label>
+                            <label>nombre</label>
                             <input name="firstName" type="text" {...register('firstName')} className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.firstName?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>Last Name</label>
+                            <label>apellido</label>
                             <input name="lastName" type="text" {...register('lastName')} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.lastName?.message}</div>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>Username</label>
+                            <label>usuarios</label>
                             <input name="username" type="text" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.email?.message}</div>
                         </div>
                         <div className="form-group col">
                             <label>
-                                Password
+                                contraseña 
                                 {mode.edit && <em className="ml-1">(Leave blank to keep the same password)</em>}
                             </label>
                             <input name="password" type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />

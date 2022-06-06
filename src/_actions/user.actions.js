@@ -1,27 +1,35 @@
 import { useRecoilState, useSetRecoilState, useResetRecoilState } from 'recoil';
 
 import { history, useFetchWrapper } from '_helpers';
-import { authAtom, usersAtom, userAtom } from '_state';
+import {authAtom, usersAtom, userAtom, localesAtom} from '_state';
 
 export { useUserActions };
 
 function useUserActions () {
     const baseUrl = `${process.env.REACT_APP_API_URL}/users`;
+    const localesUrl = `${process.env.REACT_APP_API_URL}/locales`;
     const fetchWrapper = useFetchWrapper();
     const [auth, setAuth] = useRecoilState(authAtom);
     const setUsers = useSetRecoilState(usersAtom);
     const setUser = useSetRecoilState(userAtom);
+    const setLocales = useSetRecoilState(localesAtom);
 
     return {
         login,
         logout,
         register,
+        registerLocal,
+        updateLocal,
         getAll,
+        getAllLocales,
         getById,
+        getByIdLocales,
         update,
-        delete: _delete,
+        deleteUser,
+        deleteLocales,
         resetUsers: useResetRecoilState(usersAtom),
-        resetUser: useResetRecoilState(userAtom)
+        resetUser: useResetRecoilState(userAtom),
+        resetLocales: useResetRecoilState(localesAtom)
     }
 
     function login({ username, password }) {
@@ -48,16 +56,29 @@ function useUserActions () {
         return fetchWrapper.post(`${baseUrl}/register`, user);
     }
 
+    function registerLocal(locales) {
+        return fetchWrapper.post(`${localesUrl}/registrar`, locales);
+    }
+
+    // GETTERS
     function getAll() {
         return fetchWrapper.get(baseUrl).then(setUsers);
+    }
+
+    function getAllLocales() {
+        return fetchWrapper.get(localesUrl).then(setLocales);
     }
 
     function getById(id) {
         return fetchWrapper.get(`${baseUrl}/${id}`).then(setUser);
     }
 
+    function getByIdLocales(id) {
+        return fetchWrapper.get(`${localesUrl}/${id}`).then(setLocales);
+    }
+
     function update(id, params) {
-        return fetchWrapper.put(`${baseUrl}/${id}`, params)
+        return fetchWrapper.put(`${localesUrl}/${id}`, params)
             .then(x => {
                 // update stored user if the logged in user updated their own record
                 if (id === auth?.id) {
@@ -72,17 +93,24 @@ function useUserActions () {
             });
     }
 
+    function updateLocal(id, params) {
+        return fetchWrapper.put(`${localesUrl}/${id}`, params)
+            .then(x => {
+                return x;
+            });
+    }
+
     // prefixed with underscored because delete is a reserved word in javascript
-    function _delete(id) {
+    function deleteUser(id) {
         setUsers(users => users.map(x => {
             // add isDeleting prop to user being deleted
-            if (x.id === id) 
+            if (x.id === id)
                 return { ...x, isDeleting: true };
 
             return x;
         }));
 
-        return fetchWrapper.delete(`${baseUrl}/${id}`)
+        return fetchWrapper.delete(`${localesUrl}/${id}`)
             .then(() => {
                 // remove user from list after deleting
                 setUsers(users => users.filter(x => x.id !== id));
@@ -91,6 +119,22 @@ function useUserActions () {
                 if (id === auth?.id) {
                     logout();
                 }
+            });
+    }
+
+    function deleteLocales(id) {
+        setLocales(locales => locales.map(x => {
+            // add isDeleting prop to user being deleted
+            if (x.id === id)
+                return { ...x, isDeleting: true };
+
+            return x;
+        }));
+
+        return fetchWrapper.delete(`${localesUrl}/${id}`)
+            .then(() => {
+                // remove user from list after deleting
+                setLocales(locales => locales.filter(x => x.id !== id));
             });
     }
 }

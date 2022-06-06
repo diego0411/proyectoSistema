@@ -16,8 +16,11 @@ function Nav() {
     return (
         <nav className="navbar navbar-expand navbar-dark bg-dark">
             <div className="navbar-nav">
-                <NavLink exact to="/" className="nav-item nav-link">Home</NavLink>
-                <NavLink to="/users" className="nav-item nav-link">Users</NavLink>
+                <NavLink exact to="/" className="nav-item nav-link">inicio</NavLink>
+                <NavLink to="/users" className="nav-item nav-link">usuarios</NavLink>
+                <NavLink to="/locales" className="nav-item nav-link">locales</NavLink>
+                <NavLink to="/eventos" className="nav-item nav-link">eventos</NavLink>
+                <NavLink to="/menu" className="nav-item nav-link">menu</NavLink>
                 <a onClick={userActions.logout} className="nav-item nav-link">Logout</a>
             </div>
         </nav>

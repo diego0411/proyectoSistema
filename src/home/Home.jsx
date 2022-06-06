@@ -11,9 +11,9 @@ function Home() {
     return (
         <div className="p-4">
             <div className="container">
-                <h1>Hi {auth?.firstName}!</h1>
-                <p>You're logged in with React + Recoil & JWT!!</p>
-                <p><Link to="/users">Manage Users</Link></p>
+                <h1>hola {auth?.firstName}!</h1>
+                <p>bienvenido a tu dashboard</p>
+                <p><Link to="/users">gestionar usuarios</Link></p>
             </div>
         </div>
     );

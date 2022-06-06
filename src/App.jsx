@@ -7,6 +7,9 @@ import { history } from '_helpers';
 import { Home } from 'home';
 import { Users } from 'users';
 import { Account } from 'account';
+import { Locales } from "./locales/Locales";
+import { Events } from "./events/Events";
+import { Item } from "./menu/Item";
 
 export { App };
 
@@ -21,7 +24,10 @@ function App() {
                 <Switch>
                     <PrivateRoute exact path="/" component={Home} />
                     <PrivateRoute path="/users" component={Users} />
+                    <PrivateRoute path="/locales" component={Locales} />
                     <Route path="/account" component={Account} />
+                    <Route path="/eventos" component={Events} />
+                    <Route path="/menu" component={Item} />
                     <Redirect from="*" to="/" />
                 </Switch>
             </Router>

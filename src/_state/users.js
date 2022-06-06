@@ -10,7 +10,19 @@ const userAtom = atom({
     default: null
 });
 
+const localesAtom = atom({
+    key: 'locales',
+    default: null
+});
+
+const localAtom = atom({
+    key: 'local',
+    default: null
+});
+
 export { 
     usersAtom,
-    userAtom
+    userAtom,
+    localesAtom,
+    localAtom
 };
