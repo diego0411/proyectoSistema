@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useRecoilValue } from 'recoil';
 
-import { localAtom } from '_state';
+import { planAtom } from '_state';
 import { useUserActions, useAlertActions } from '_actions';
 
 export { AddEdit };
@@ -15,16 +15,18 @@ function AddEdit({ history, match }) {
     const mode = { add: !id, edit: !!id };
     const userActions = useUserActions();
     const alertActions = useAlertActions();
-    const local = useRecoilValue(localAtom);
+    const plan = useRecoilValue(planAtom);
 
     // form validation rules
     const validationSchema = Yup.object().shape({
         nombre: Yup.string()
             .required('el nombre es requerido'),
-        direccion: Yup.string()
-            .required('la direccion es requerida'),
         descripcion: Yup.string()
-            .required('la descripcion es requerida')
+            .required('la descripcion es requerida'),
+        precio: Yup.string()
+            .required('el precio es requerido'),
+        cantidadMeses: Yup.string()
+            .required('la cantidad de meses es requerida'),
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -35,49 +37,49 @@ function AddEdit({ history, match }) {
     useEffect(() => {
         // fetch user details into recoil state in edit mode
         if (mode.edit) {
-            userActions.getByLocal(id);
+            userActions.getByPlan(id);
         }
 
-        return userActions.resetLocal;
+        return userActions.resetPlan;
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         // set default form values after user set in recoil state (in edit mode)
-        if (mode.edit && local) {
-            reset(local);
+        if (mode.edit && plan) {
+            reset(plan);
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [local])
+    }, [plan])
 
     function onSubmit(data) {
         return mode.add
-            ? createLocal(data)
-            : updateLocal(local.id, data);
+            ? createPlan(data)
+            : updatePlan(plan.id, data);
     }
 
-    function createLocal(data) {
-        return userActions.registerLocal(data)
+    function createPlan(data) {
+        return userActions.registerPlan(data)
             .then(() => {
-                history.push('/locales');
-                alertActions.success('Local added');
+                history.push('/planes');
+                alertActions.success('Plan added');
             });
     }
 
-    function updateLocal(id, data) {
-        return userActions.updateLocal(id, data)
+    function updatePlan(id, data) {
+        return userActions.updatePlan(id, data)
             .then(() => {
-                history.push('/locales');
-                alertActions.success('Local updated');
+                history.push('/planes');
+                alertActions.success('plan updated');
             });
     }
 
-    const loading = mode.edit && !local;
+    const loading = mode.edit && !plan;
     return (
         <>
-            <h1>{mode.add ? 'Add Local' : 'Edit Local'}</h1>
+            <h1>{mode.add ? 'Add Plan' : 'Edit Plan'}</h1>
             {!loading &&
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
@@ -87,23 +89,29 @@ function AddEdit({ history, match }) {
                             <div className="invalid-feedback">{errors.nombre?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>direccion</label>
-                            <input name="direccion" type="text" {...register('direccion')} className={`form-control ${errors.direccion ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.direccion?.message}</div>
-                        </div>
-                        <div className="form-group col">
                             <label>descripcion</label>
                             <input name="descripcion" type="text" {...register('descripcion')} className={`form-control ${errors.descripcion ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.descripcion?.message}</div>
                         </div>
+                        <div className="form-group col">
+                            <label>precio</label>
+                            <input name="precio" type="text" {...register('precio')} className={`form-control ${errors.precio ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.precio?.message}</div>
+                        </div>
+                        <div className="form-group col">
+                            <label>cantidadMeses</label>
+                            <input name="cantidadMeses" type="text" {...register('cantidadMeses')} className={`form-control ${errors.cantidadMeses ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.cantidadMeses?.message}</div>
+                        </div>
+
                     </div>
                     <div className="form-group">
                         <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
                             {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                             Save
                         </button>
-                        <button onClick={() => reset(local)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
-                        <Link to="/locales" className="btn btn-link">Cancel</Link>
+                        <button onClick={() => reset(plan)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
+                        <Link to="/planes" className="btn btn-link">Cancel</Link>
                     </div>
                 </form>
             }

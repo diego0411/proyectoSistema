@@ -26,8 +26,7 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Eventos</h1>
-            <Link to={`${path}/add`}  className="btn btn-sm btn-success mb-2">Add evento</Link>
+            <h1>Eventos Disponibles</h1>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -51,14 +50,8 @@ function List({ match }) {
                             <td>{evento.horaFin}</td>
                             <td>{evento.cantidadPersonas}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to={`${path}/edit/${evento.id}`} className="btn btn-sm btn-primary mr-1">edit</Link>
+                                <Link to="/mesas" onClick={() => userActions.saveDataEventos(evento.id)}  className="btn btn-sm btn-primary mr-1">realizar reserva</Link>
                                 <Link to="/menus" onClick={() => userActions.saveDataEventos(evento.id)}  className="btn btn-sm btn-primary mr-1">menus</Link>
-                                <button onClick={() => userActions.deleteEvento(evento.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={evento.isDeleting}>
-                                    {evento.isDeleting
-                                        ? <span className="spinner-border spinner-border-sm"></span>
-                                        : <span>eliminar</span>
-                                    }
-                                </button>
                             </td>
                         </tr>
                     </>

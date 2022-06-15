@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useRecoilValue } from 'recoil';
 
-import { localAtom } from '_state';
+import { invitadoAtom } from '_state';
 import { useUserActions, useAlertActions } from '_actions';
 
 export { AddEdit };
@@ -15,16 +15,16 @@ function AddEdit({ history, match }) {
     const mode = { add: !id, edit: !!id };
     const userActions = useUserActions();
     const alertActions = useAlertActions();
-    const local = useRecoilValue(localAtom);
+    const invitado = useRecoilValue(invitadoAtom);
 
     // form validation rules
     const validationSchema = Yup.object().shape({
         nombre: Yup.string()
             .required('el nombre es requerido'),
-        direccion: Yup.string()
-            .required('la direccion es requerida'),
-        descripcion: Yup.string()
-            .required('la descripcion es requerida')
+        apellidos: Yup.string()
+            .required('almenuos uno de sus apellidos es requerido'),
+        ci: Yup.number()
+            .required('es requerido su Carnet de Identidad'),
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -35,75 +35,78 @@ function AddEdit({ history, match }) {
     useEffect(() => {
         // fetch user details into recoil state in edit mode
         if (mode.edit) {
-            userActions.getByLocal(id);
+            userActions.getByInvitado(id);
         }
 
-        return userActions.resetLocal;
+        return userActions.resetUser;
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         // set default form values after user set in recoil state (in edit mode)
-        if (mode.edit && local) {
-            reset(local);
+        if (mode.edit && invitado) {
+            reset(invitado);
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [local])
+    }, [invitado])
 
     function onSubmit(data) {
         return mode.add
-            ? createLocal(data)
-            : updateLocal(local.id, data);
+            ? createInvitado(data)
+            : updateInvitado(invitado.id, data);
     }
 
-    function createLocal(data) {
-        return userActions.registerLocal(data)
+    function createInvitado(data) {
+        data.reservaId = localStorage.getItem('idr');
+        return userActions.registerInvitado(data)
             .then(() => {
-                history.push('/locales');
-                alertActions.success('Local added');
+                history.push('/invitados');
+                alertActions.success('Invitado added');
             });
     }
 
-    function updateLocal(id, data) {
-        return userActions.updateLocal(id, data)
+    function updateInvitado(id, data) {
+        return userActions.updateInvitado(id, data)
             .then(() => {
-                history.push('/locales');
-                alertActions.success('Local updated');
+                history.push('/invitados');
+                alertActions.success('Invitado updated');
             });
     }
 
-    const loading = mode.edit && !local;
+    const loading = mode.edit && !invitado;
     return (
         <>
-            <h1>{mode.add ? 'Add Local' : 'Edit Local'}</h1>
+            <h1>{mode.add ? 'Add Invitado' : 'Edit Invitado'}</h1>
             {!loading &&
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>nombre del local</label>
+                            <label>nombre</label>
                             <input name="nombre" type="text" {...register('nombre')} className={`form-control ${errors.nombre ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.nombre?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>direccion</label>
-                            <input name="direccion" type="text" {...register('direccion')} className={`form-control ${errors.direccion ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.direccion?.message}</div>
+                            <label>apellidos</label>
+                            <input name="apellidos" type="text" {...register('apellidos')} className={`form-control ${errors.apellidos ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.apellidos?.message}</div>
                         </div>
-                        <div className="form-group col">
-                            <label>descripcion</label>
-                            <input name="descripcion" type="text" {...register('descripcion')} className={`form-control ${errors.descripcion ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.descripcion?.message}</div>
+                        <div className="form-row"><div className="form-group col">
+                            <label>ci</label>
+                            <input name="ci" type="text" {...register('ci')} className={`form-control ${errors.ci ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.ci?.message}</div>
                         </div>
+                    </div>
+
                     </div>
                     <div className="form-group">
                         <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
                             {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                             Save
                         </button>
-                        <button onClick={() => reset(local)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
-                        <Link to="/locales" className="btn btn-link">Cancel</Link>
+                        <button onClick={() => reset(invitado)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
+                        <Link to="/invitados" className="btn btn-link">Cancel</Link>
                     </div>
                 </form>
             }

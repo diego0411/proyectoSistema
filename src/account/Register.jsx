@@ -17,6 +17,10 @@ function Register({ history }) {
             .required('First Name is required'),
         lastName: Yup.string()
             .required('Last Name is required'),
+        correo: Yup.string()
+            .required('correo is required'),
+        telefono: Yup.string()
+            .required('Last Name is required'),
         username: Yup.string()
             .required('Username is required'),
         password: Yup.string()
@@ -57,6 +61,16 @@ function Register({ history }) {
                         <input name="username" type="text" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
                         <div className="invalid-feedback">{errors.username?.message}</div>
                     </div>
+                    <div className="form-row"><div className="form-group col">
+                        <label>correo</label>
+                        <input name="correo" type="text" {...register('correo')} className={`form-control ${errors.correo ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.correo?.message}</div>
+                    </div>
+                        <div className="form-group col">
+                            <label>telefono</label>
+                            <input name="telefono" type="text" {...register('telefono')} className={`form-control ${errors.telefono ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.telefono?.message}</div>
+                        </div></div>
                     <div className="form-group">
                         <label>Password</label>
                         <input name="password" type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />

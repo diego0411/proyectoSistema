@@ -29,6 +29,8 @@ function List({ match }) {
                     <tr>
                         <th style={{ width: '30%' }}>nombre</th>
                         <th style={{ width: '30%' }}>apellido</th>
+                        <th style={{ width: '30%' }}>correo</th>
+                        <th style={{ width: '30%' }}>telefono</th>
                         <th style={{ width: '30%' }}>nombre de usuario</th>
                         <th style={{ width: '10%' }}></th>
                     </tr>
@@ -38,10 +40,14 @@ function List({ match }) {
                         <tr key={user.id}>
                             <td>{user.firstName}</td>
                             <td>{user.lastName}</td>
+                            <td>{user.correo}</td>
+                            <td>{user.telefono}</td>
                             <td>{user.username}</td>
+                            <td>{user.role}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
                                 <Link to={`${path}/edit/${user.id}`} className="btn btn-sm btn-primary mr-1">editar</Link>
-                                <button onClick={() => userActions.deleteUser(user.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={user.isDeleting}>
+                                <Link to="/locales" className="btn btn-sm btn-primary mr-1">locales</Link>
+                                <button onClick={() => userActions.delete(user.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={user.isDeleting}>
                                     {user.isDeleting 
                                         ? <span className="spinner-border spinner-border-sm"></span>
                                         : <span>eliminar</span>

@@ -2,52 +2,49 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
-import { localesAtom } from '_state';
+import {menusAtom} from '_state';
 import { useUserActions } from '_actions';
 
 export { List };
 
 function List({ match }) {
     const { path } = match;
-    const locales = useRecoilValue(localesAtom);
+    const menus = useRecoilValue(menusAtom);
     const userActions = useUserActions();
-    const localIdl= String;
 
     useEffect(() => {
-        userActions.getLocal();
+        userActions.getMenu();
 
-        return userActions.resetLocales;
+        return userActions.resetMenus;
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <div>
-            <h1>Locales</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add local</Link>
+            <h1>Menus</h1>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">agregar menu</Link>
             <table className="table table-striped">
                 <thead>
                 <tr>
-                    <th style={{ width: '30%' }}>idLocal</th>
+                    <th style={{ width: '30%' }}>menuId</th>
                     <th style={{ width: '30%' }}>nombre</th>
-                    <th style={{ width: '30%' }}>descripcion</th>
-                    <th style={{ width: '30%' }}>direccion</th>
+                    <th style={{ width: '30%' }}>localId</th>
                     <th style={{ width: '10%' }}></th>
                 </tr>
                 </thead>
                 <tbody>
-                {locales?.map(local =>
+                {menus?.map(menu =>
                     <>
-                        <tr key={local.id}>
-                            <td>{local.id}</td>
-                            <td>{local.nombre}</td>
-                            <td>{local.direccion}</td>
-                            <td>{local.descripcion}</td>
+                        <tr key={menu.id}>
+                            <td>{menu.id}</td>
+                            <td>{menu.nombre}</td>
+                            <td>{menu.localId}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to={`${path}/edit/${local.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
-                                <Link to="/eventos" onClick={() => userActions.saveData(local.id)}  className="btn btn-sm btn-primary mr-1">eventos</Link>
-                                <button onClick={() => userActions.deleteLocal(local.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={local.isDeleting}>
-                                    {local.isDeleting
+                                <Link to={`${path}/edit/${menu.id}`} className="btn btn-sm btn-primary mr-1">edit</Link>
+                                <Link to="/items" onClick={() => userActions.saveDataItem(menu.id)}  className="btn btn-sm btn-primary mr-1">items</Link>
+                                <button onClick={() => userActions.deleteMenu(menu.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={menu.isDeleting}>
+                                    {menu.isDeleting
                                         ? <span className="spinner-border spinner-border-sm"></span>
                                         : <span>eliminar</span>
                                     }
@@ -56,7 +53,7 @@ function List({ match }) {
                         </tr>
                     </>
                 )}
-                {!locales &&
+                {!menus &&
                     <tr>
                         <td colSpan="4" className="text-center">
                             <span className="spinner-border spinner-border-lg align-center"></span>
@@ -68,4 +65,3 @@ function List({ match }) {
         </div>
     );
 }
-export default List;

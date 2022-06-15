@@ -23,8 +23,7 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Locales</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add local</Link>
+            <h1>Locales Disponibles</h1>
             <table className="table table-striped">
                 <thead>
                 <tr>
