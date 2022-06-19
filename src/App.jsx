@@ -14,7 +14,7 @@ import { Mesas } from "./mesas/Mesas";
 import { Reservas } from "./reservas/Reservas";
 import { Items } from "./items/Item";
 import { Invitados } from "./invitados/Invitados";
-import { Solicitudes } from "./solicitudes/Solicitudes";
+import { Suscripciones } from "./solicitudes/Suscripciones";
 import { ReclamosA } from "./reclamosA/ReclamosA";
 import { Reclamos } from "./reclamos/Reclamos";
 import { Planes } from "./planes/Planes";
@@ -35,6 +35,7 @@ function App() {
                 <Alert />
                 <Switch>
                     <PrivateRoute exact path="/" component={Home} />
+                    <PrivateRoute path="/suscripciones" component={Suscripciones} />
                     <PrivateRoute path="/users" component={Users} />
                     <PrivateRoute path="/locales" component={Locales} />
                     <PrivateRoute path="/localesC" component={LocalesC} />
@@ -46,7 +47,7 @@ function App() {
                     <PrivateRoute path="/mesasC" component={MesasC} />
                     <PrivateRoute path="/invitados" component={Invitados} />
                     <PrivateRoute path="/reservas" component={Reservas} />
-                    <PrivateRoute path="/solicitudes" component={Solicitudes} />
+                    <PrivateRoute path="/solicitudes" component={Suscripciones} />
                     <PrivateRoute path="/reclamos" component={Reclamos} />
                     <PrivateRoute path="/reclamosA" component={ReclamosA} />
                     <PrivateRoute path="/planes" component={Planes} />

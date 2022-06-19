@@ -19,8 +19,10 @@ function AddEdit({ history, match }) {
 
     // form validation rules
     const validationSchema = Yup.object().shape({
-        descripcion: Yup.string()
-            .required('la descripcion es requerida'),
+        plan: Yup.string()
+            .required('elija su plan'),
+        Renovacion: Yup.string()
+            .required('por fafor elija true o false'),
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -55,6 +57,7 @@ function AddEdit({ history, match }) {
     }
 
     function createSolicitud(data) {
+        data.planId = localStorage.getItem('idp');
         return userActions.registerSolicitud(data)
             .then(() => {
                 history.push('/solicitudes');
@@ -78,9 +81,9 @@ function AddEdit({ history, match }) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>descripcion</label>
-                            <input name="descripcion" type="text" {...register('descripcion')} className={`form-control ${errors.descripcion ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.descripcion?.message}</div>
+                            <label>Renovaciones</label>
+                            <input name="Renovacion" type="checkbox" {...register('Renovacion')} className={`form-control ${errors.Renovacion ? 'is-invalid' : ''}`} />
+                            <div className="invalid-feedback">{errors.Renovacion?.message}</div>
                         </div>
                     </div>
                     <div className="form-group">

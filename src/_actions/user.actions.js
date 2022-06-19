@@ -16,7 +16,7 @@ function useUserActions () {
     const mesasUrl = `${process.env.REACT_APP_API_URL}/Mesas`; //anadido
     const invitadosUrl = `${process.env.REACT_APP_API_URL}/Invitados`; //anadido
     const reservasUrl = `${process.env.REACT_APP_API_URL}/Reservas`; //anadido
-    const solicitudesUrl = `${process.env.REACT_APP_API_URL}/Solicitudes`; //anadido
+    const solicitudesUrl = `${process.env.REACT_APP_API_URL}/Suscription`; //anadido
     const reclamosUrl = `${process.env.REACT_APP_API_URL}/Reclamos`; //anadido
     const planesUrl = `${process.env.REACT_APP_API_URL}/Plans`; //anadido
     const fetchWrapper = useFetchWrapper();
@@ -60,6 +60,7 @@ function useUserActions () {
         saveDataEventos,
         saveDataItem,
         saveDataReserva,
+        saveDataPlan,
         getData,
         login,
         logout,
@@ -499,6 +500,9 @@ function useUserActions () {
     }
     function saveDataReserva(idr){
         localStorage.setItem('idr',idr);
+    }
+    function saveDataPlan(idp){
+        localStorage.setItem('idp',idp);
     }
     function getData(id){
         return  localStorage.getItem(id);

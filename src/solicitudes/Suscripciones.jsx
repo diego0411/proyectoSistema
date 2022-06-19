@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 
 import { List, AddEdit } from './';
 
-export { Solicitudes };
+export { Suscripciones };
 
-function Solicitudes({ match }) {
+function Suscripciones({ match }) {
     const { path } = match;
 
     return (

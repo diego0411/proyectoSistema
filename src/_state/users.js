@@ -84,11 +84,11 @@ const solicitudesAtom = atom({
 });
 
 const solicitudAtom = atom({
-    key: 'solicitud',
+    key: 'suscripciones',
     default: null
 });
 const reclamosAtom = atom({
-    key: 'reclamos',
+    key: 'suscripcion',
     default: null
 });
 
