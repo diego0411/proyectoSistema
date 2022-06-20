@@ -11,7 +11,6 @@ function List({ match }) {
     const { path } = match;
     const locales = useRecoilValue(localesAtom);
     const userActions = useUserActions();
-    const localIdl= String;
 
     useEffect(() => {
         userActions.getLocal();

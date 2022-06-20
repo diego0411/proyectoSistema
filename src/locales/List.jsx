@@ -12,9 +12,8 @@ function List({ match }) {
     const locales = useRecoilValue(localesAtom);
     const userActions = useUserActions();
 
-
     useEffect(() => {
-        userActions.getLocal();
+        userActions.getLocalId(JSON.parse(localStorage.getItem('user')).id);
 
         return userActions.resetLocales;
 
@@ -24,7 +23,7 @@ function List({ match }) {
     return (
         <div>
             <h1>Locales</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add local</Link>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">agregar local</Link>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -37,24 +36,22 @@ function List({ match }) {
                 </thead>
                 <tbody>
                 {locales?.map(local =>
-                    <>
-                        <tr key={local.id}>
-                            <td>{local.id}</td>
-                            <td>{local.nombre}</td>
-                            <td>{local.direccion}</td>
-                            <td>{local.descripcion}</td>
-                            <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to={`${path}/edit/${local.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
-                                <Link to="/eventos" onClick={() => userActions.saveData(local.id)}  className="btn btn-sm btn-primary mr-1">eventos</Link>
-                                <button onClick={() => userActions.deleteLocal(local.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={local.isDeleting}>
-                                    {local.isDeleting
-                                        ? <span className="spinner-border spinner-border-sm"></span>
-                                        : <span>eliminar</span>
-                                    }
-                                </button>
-                            </td>
-                        </tr>
-                    </>
+                    <tr key={local.id}>
+                        <td>{local.id}</td>
+                        <td>{local.nombre}</td>
+                        <td>{local.direccion}</td>
+                        <td>{local.descripcion}</td>
+                        <td style={{ whiteSpace: 'nowrap' }}>
+                            <Link to={`${path}/edit/${local.id}`} className="btn btn-sm btn-primary mr-1">editar</Link>
+                            <Link to="/eventos" className="btn btn-sm btn-primary mr-1">eventos</Link>
+                            <button onClick={() => userActions.delete(local.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={local.isDeleting}>
+                                {local.isDeleting
+                                    ? <span className="spinner-border spinner-border-sm"></span>
+                                    : <span>eliminar</span>
+                                }
+                            </button>
+                        </td>
+                    </tr>
                 )}
                 {!locales &&
                     <tr>
