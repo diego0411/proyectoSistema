@@ -11,9 +11,10 @@ function Home() {
     return (
         <div className="p-4">
             <div className="container">
-                <h1>hola {auth?.firstName}!</h1>
-                <p>bienvenido a tu dashboard</p>
-                <p><Link to="/users">gestionar usuarios</Link></p>
+                <h1>HOLA {auth?.firstName}!</h1>
+                <p>BIENVENIDO a SITME</p>
+                <p>DISFRUTA DE LA SIMPLICIDAD Y LA FACILIDAD Y REALIZA TU RESERVA</p>
+                <p>¡¡AHORA MISMO!!</p>
             </div>
         </div>
     );

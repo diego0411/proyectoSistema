@@ -20,6 +20,7 @@ function Nav() {
     if (!auth) return null;
     
     return (
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="navbar bg-neutral">
             <div className="flex-1">
                 <Link to={{pathname: '/'}} className="hover:no-underline hover:text-white hover:bg-primary btn btn-ghost normal-case text-xl text-white">
@@ -27,49 +28,57 @@ function Nav() {
                 </Link>
             </div>
             <div className="flex-none">
-                <ul className="menu menu-horizontal p-0 text-white">
+                <ul className="navbar-nav">
                     <li>
-                        <Link to={{pathname: '/'}} className="hover:no-underline hover:text-white hover:bg-primary">
+                        <Link to={{pathname: '/'}} className="nav-item nav-link">
                             home
                         </Link>
                     </li>
+
                     <li>
-                        <Link to={{pathname: '/account/login'}} onClick={userActions.logout} className="hover:no-underline hover:text-white hover:bg-primary">
-                            Logout
+                        <Link to={{pathname: '/account/login'}} onClick={userActions.logout} className="nav-item nav-link">
+                             Logout
                         </Link>
                     </li>
+
                     {(role !== null && role == 2) && <li>
-                        <Link to={{pathname: '/solicitudes'}} className="hover:no-underline hover:text-white hover:bg-primary">
+                        <Link to={{pathname: '/solicitudes'}} className="nav-item nav-link">
                             suscripciones
                         </Link>
                     </li>}
+
                     {(role !== null && role == 2) && <li>
-                        <Link to={{pathname: '/reclamos'}} className="hover:no-underline hover:text-white hover:bg-primary">
+                        <Link to={{pathname: '/reclamos'}} className="nav-item nav-link">
                             reclamos
                         </Link>
                     </li>}
+
                     {(role !== null && role == 2) && <li>
-                        <Link to={{pathname: '/reservas'}} className="hover:no-underline hover:text-white hover:bg-primary">
+                        <Link to={{pathname: '/localesC'}} className="nav-item nav-link">
+                            local disponibles
+                        </Link>
+                    </li>}
+
+                    {(role !== null && role == 2 || role===1) && <li>
+                        <Link to={{pathname: '/reservas'}} className="nav-item nav-link">
                             reservas
                         </Link>
                     </li>}
-                    {(role !== null && role == 2) && <li>
-                        <Link to={{pathname: '/localesC'}} className="hover:no-underline hover:text-white hover:bg-primary">
-                            local
+
+                    {(role !== null && role === 1 || role === 0 ) && <li>
+                        <Link to={{pathname: '/locales'}} className="nav-item nav-link">
+                            mis locales
                         </Link>
                     </li>}
-                    {(role !== null && role === 1) && <li>
-                        <Link to={{pathname: '/locales'}} className="hover:no-underline hover:text-white hover:bg-primary">
-                            local
-                        </Link>
-                    </li>}
+
                     {(role !== null && role === 0) && <li>
-                        <Link to={{pathname: '/Users'}} className="hover:no-underline hover:text-white hover:bg-primary">
+                        <Link to={{pathname: '/Users'}} className="nav-item nav-link">
                             Users
                         </Link>
                     </li>}
                 </ul>
             </div>
         </div>
+        </nav>
     );
 }

@@ -10,7 +10,7 @@ export { useUserActions };
 function useUserActions () {
     const baseUrl = `${process.env.REACT_APP_API_URL}/users`;
     const localesUrl = `${process.env.REACT_APP_API_URL}/Locales`; //anadido
-    const localesIdUrl = `${process.env.REACT_APP_API_URL}/Locales/UserID`; //anadido
+    const localesIdUrl = `${process.env.REACT_APP_API_URL}/Locales/getByUser`; //anadido
     const eventosUrl = `${process.env.REACT_APP_API_URL}/Eventos`; //anadido
     const menusUrl = `${process.env.REACT_APP_API_URL}/Menus`; //anadido
     const itemsUrl = `${process.env.REACT_APP_API_URL}/Items`; //anadido
@@ -226,7 +226,7 @@ function useUserActions () {
 
     //anadido
     function getLocal() {
-        return fetchWrapper.get(localesIdUrl).then(setLocales);
+        return fetchWrapper.get(localesUrl).then(setLocales);
     }
     //anadido
     function getLocalId(id) {
