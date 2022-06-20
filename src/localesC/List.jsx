@@ -22,7 +22,7 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Locales Disponibles</h1>
+            <h1>LOCALES DISPONIBLES</h1>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -42,7 +42,7 @@ function List({ match }) {
                             <td>{local.direccion}</td>
                             <td>{local.descripcion}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to="/eventosC" onClick={() => userActions.saveData(local.id)}  className="btn btn-sm btn-primary mr-1">eventos</Link>
+                                <Link to="/eventosC" onClick={() => userActions.saveData(local.id)}  className="btn btn-sm btn-primary mr-1">EVENTOS</Link>
                             </td>
                         </tr>
                     </>

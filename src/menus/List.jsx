@@ -22,8 +22,8 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Menus</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">agregar menu</Link>
+            <h1>MIS MENUS</h1>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">AGREGAR MENU</Link>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -41,12 +41,12 @@ function List({ match }) {
                             <td>{menu.nombre}</td>
                             <td>{menu.localId}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to={`${path}/edit/${menu.id}`} className="btn btn-sm btn-primary mr-1">edit</Link>
-                                <Link to="/items" onClick={() => userActions.saveDataItem(menu.id)}  className="btn btn-sm btn-primary mr-1">items</Link>
+                                <Link to={`${path}/edit/${menu.id}`} className="btn btn-sm btn-primary mr-1">EDITAR</Link>
+                                <Link to="/items" onClick={() => userActions.saveDataItem(menu.id)}  className="btn btn-sm btn-primary mr-1">AGREGAR ITEM</Link>
                                 <button onClick={() => userActions.deleteMenu(menu.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={menu.isDeleting}>
                                     {menu.isDeleting
                                         ? <span className="spinner-border spinner-border-sm"></span>
-                                        : <span>eliminar</span>
+                                        : <span>ELIMINAR</span>
                                     }
                                 </button>
                             </td>

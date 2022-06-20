@@ -80,12 +80,12 @@ function AddEdit({ history, match }) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>asunto</label>
+                            <label>ASUNTO</label>
                             <input name="asunto" type="text" {...register('asunto')} className={`form-control ${errors.asunto ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.asunto?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>descripcion</label>
+                            <label>DESCRIPCION</label>
                             <input name="descripcion" type="text" {...register('descripcion')} className={`form-control ${errors.descripcion ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.descripcion?.message}</div>
                         </div>
@@ -93,10 +93,10 @@ function AddEdit({ history, match }) {
                     <div className="form-group">
                         <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
                             {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                            Save
+                            GUARDAR
                         </button>
-                        <button onClick={() => reset(reclamo)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
-                        <Link to="/reclamos" className="btn btn-link">Cancel</Link>
+                        <button onClick={() => reset(reclamo)} type="button" disabled={isSubmitting} className="btn btn-secondary">RESET</button>
+                        <Link to="/reclamos" className="btn btn-link">CANCELAR</Link>
                     </div>
                 </form>
             }

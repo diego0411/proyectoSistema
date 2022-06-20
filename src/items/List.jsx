@@ -22,8 +22,8 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Items</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">agregar Item</Link>
+            <h1>ITEMS</h1>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">AGREGAR ITEM</Link>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -40,11 +40,11 @@ function List({ match }) {
                         <td>{item.descripcion}</td>
                         <td>{item.precio}<label>Bs.</label> </td>
                         <td style={{ whiteSpace: 'nowrap' }}>
-                            <Link to={`${path}/edit/${item.id}`} className="btn btn-sm btn-primary mr-1">edit</Link>
+                            <Link to={`${path}/edit/${item.id}`} className="btn btn-sm btn-primary mr-1">EDITAR</Link>
                             <button onClick={() => userActions.deleteItem(item.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={item.isDeleting}>
                                 {item.isDeleting
                                     ? <span className="spinner-border spinner-border-sm"></span>
-                                    : <span>eliminar</span>
+                                    : <span>ELIMINAR</span>
                                 }
                             </button>
                         </td>

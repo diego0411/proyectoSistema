@@ -22,8 +22,8 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Mesas</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add Mesa</Link>
+            <h1>MESAS DEL EVENTO</h1>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">AGREGAR MESA</Link>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -38,11 +38,11 @@ function List({ match }) {
                         <td>{mesa.id}</td>
                         <td>{mesa.numeroMesa}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
-                            <Link to={`${path}/edit/${mesa.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
+                            <Link to={`${path}/edit/${mesa.id}`} className="btn btn-sm btn-primary mr-1">EDITAR</Link>
                             <button onClick={() => userActions.deleteMesa(mesa.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={mesa.isDeleting}>
                                 {mesa.isDeleting
                                     ? <span className="spinner-border spinner-border-sm"></span>
-                                    : <span>Delete</span>
+                                    : <span>BORRAR</span>
                                 }
                             </button>
                         </td>

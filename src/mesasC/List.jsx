@@ -22,7 +22,7 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Mesas Disponibles</h1>
+            <h1>MESAS DISPONIBLES</h1>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -37,7 +37,7 @@ function List({ match }) {
                         <td>{mesa.id}</td>
                         <td>{mesa.numeroMesa}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
-                            <Link to="/reservas" onClick={() => userActions.saveDataItem(mesa.id)}  className="btn btn-sm btn-primary mr-1">Confirmar Reserva</Link>
+                            <Link to="/reservas" onClick={() => userActions.saveDataItem(mesa.id)}  className="btn btn-sm btn-primary mr-1">CONFIRMAR RESERVA</Link>
                         </td>
                     </tr>
                 )}

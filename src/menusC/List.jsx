@@ -22,7 +22,7 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Menus</h1>
+            <h1>MENUS</h1>
             <table className="table table-striped">
                 <thead>
                 <tr>

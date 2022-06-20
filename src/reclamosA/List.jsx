@@ -41,12 +41,12 @@ function List({ match }) {
                         <td>{reclamo.asunto}</td>
                         <td>{reclamo.descripcion}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
-                            <Link to={`${path}/edit/${reclamo.id}`} className="btn btn-sm btn-primary mr-1">editar</Link>
-                            <Link to="/reclamos" className="btn btn-sm btn-primary mr-1">reclamos</Link>
+                            <Link to={`${path}/edit/${reclamo.id}`} className="btn btn-sm btn-primary mr-1">EDITAR</Link>
+                            <Link to="/reclamos" className="btn btn-sm btn-primary mr-1">RECLAMOS</Link>
                             <button onClick={() => userActions.deleteReclamo(reclamo.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={reclamo.isDeleting}>
                                 {reclamo.isDeleting
                                     ? <span className="spinner-border spinner-border-sm"></span>
-                                    : <span>eliminar</span>
+                                    : <span>ELIMINAR</span>
                                 }
                             </button>
                         </td>

@@ -82,17 +82,17 @@ function AddEdit({ history, match }) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>nombre del local</label>
+                            <label>NOMBRE DEL LOCAL</label>
                             <input name="nombre" type="text" {...register('nombre')} className={`form-control ${errors.nombre ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.nombre?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>direccion</label>
+                            <label>DIRECCION</label>
                             <input name="direccion" type="text" {...register('direccion')} className={`form-control ${errors.direccion ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.direccion?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>descripcion</label>
+                            <label>DESCRIPCION</label>
                             <input name="descripcion" type="text" {...register('descripcion')} className={`form-control ${errors.descripcion ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.descripcion?.message}</div>
                         </div>
@@ -100,10 +100,10 @@ function AddEdit({ history, match }) {
                     <div className="form-group">
                         <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
                             {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                            Save
+                            GUARDAR
                         </button>
-                        <button onClick={() => reset(local)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
-                        <Link to="/locales" className="btn btn-link">Cancel</Link>
+                        <button onClick={() => reset(local)} type="button" disabled={isSubmitting} className="btn btn-secondary">RESET</button>
+                        <Link to="/locales" className="btn btn-link">CANCELAR</Link>
                     </div>
                 </form>
             }

@@ -21,8 +21,8 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Reservas</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add Reserva</Link>
+            <h1>MIS RESERVAS</h1>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">REALIZAR RESERVA</Link>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -45,7 +45,7 @@ function List({ match }) {
                         <td>{reserva.usuarioId}</td>
                         <td>{reserva.invitados}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
-                            <Link to="/invitados" onClick={() => userActions.saveDataReserva(reserva.id)}  className="btn btn-sm btn-primary mr-1">Agregar Invitado</Link>
+                            <Link to="/invitados" onClick={() => userActions.saveDataReserva(reserva.id)}  className="btn btn-sm btn-primary mr-1">AGREGAR INVITADO</Link>
                             <Link to={`${path}/edit/${reserva.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
                             <button onClick={() => userActions.delete(reserva.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={reserva.isDeleting}>
                                 {reserva.isDeleting

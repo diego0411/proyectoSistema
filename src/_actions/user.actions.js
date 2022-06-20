@@ -18,7 +18,7 @@ function useUserActions () {
     const itemsUrl = `${process.env.REACT_APP_API_URL}/Items`; //anadido
     const itemsIdUrl = `${process.env.REACT_APP_API_URL}/Items/getByMenu`; //anadido
     const mesasUrl = `${process.env.REACT_APP_API_URL}/Mesas`; //anadido
-    const mesasIdUrl = `${process.env.REACT_APP_API_URL}/Menus/getByEvento`; //anadido
+    const mesasIdUrl = `${process.env.REACT_APP_API_URL}/Mesas/getByEvento`; //anadido
     const invitadosUrl = `${process.env.REACT_APP_API_URL}/Invitados`; //anadido
     const reservasUrl = `${process.env.REACT_APP_API_URL}/Reservas`; //anadido
     const solicitudesUrl = `${process.env.REACT_APP_API_URL}/Suscriptiones`; //anadido

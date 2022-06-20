@@ -79,7 +79,7 @@ function AddEdit({ history, match }) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>nombre del menu</label>
+                            <label>NOMBRE DEL MENU</label>
                             <input name="nombre" type="text" {...register('nombre')} className={`form-control ${errors.nombre ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.nombre?.message}</div>
                         </div>
@@ -89,8 +89,8 @@ function AddEdit({ history, match }) {
                             {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                             Save
                         </button>
-                        <button onClick={() => reset(menu)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
-                        <Link to="/menus" className="btn btn-link">Cancel</Link>
+                        <button onClick={() => reset(menu)} type="button" disabled={isSubmitting} className="btn btn-secondary">RESET</button>
+                        <Link to="/menus" className="btn btn-link">CANCELAR</Link>
                     </div>
                 </form>
             }

@@ -22,8 +22,8 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Planes</h1>
-            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add Plan</Link>
+            <h1>PLANES HABILITADOS</h1>
+            <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">AGREGAR PLAN</Link>
         </div>
     );
 }
