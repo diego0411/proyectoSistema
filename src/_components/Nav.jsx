@@ -34,14 +34,10 @@ function Nav() {
                         </Link>
                     </li>
                     <li>
-                        <a onClick={userActions.logout} className="hover:no-underline hover:text-white hover:bg-primary">Logout</a>
-                    </li>
-                    <li>
                         <Link to={{pathname: '/account/login'}} onClick={userActions.logout} className="hover:no-underline hover:text-white hover:bg-primary">
                             Logout
                         </Link>
                     </li>
-                    //usuarios
                     {(role !== null && role == 2) && <li>
                         <Link to={{pathname: '/solicitudes'}} className="hover:no-underline hover:text-white hover:bg-primary">
                             suscripciones
@@ -62,13 +58,11 @@ function Nav() {
                             local
                         </Link>
                     </li>}
-                    //clientes
                     {(role !== null && role === 1) && <li>
                         <Link to={{pathname: '/locales'}} className="hover:no-underline hover:text-white hover:bg-primary">
                             local
                         </Link>
                     </li>}
-                    //administrador
                     {(role !== null && role === 0) && <li>
                         <Link to={{pathname: '/Users'}} className="hover:no-underline hover:text-white hover:bg-primary">
                             Users
