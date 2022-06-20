@@ -30,7 +30,7 @@ function Nav() {
                 <ul className="menu menu-horizontal p-0 text-white">
                     <li>
                         <Link to={{pathname: '/'}} className="hover:no-underline hover:text-white hover:bg-primary">
-                            Home
+                            home
                         </Link>
                     </li>
                     <li>
