@@ -21,7 +21,7 @@ function useUserActions () {
     const mesasIdUrl = `${process.env.REACT_APP_API_URL}/Mesas/getByEvento`; //anadido
     const invitadosUrl = `${process.env.REACT_APP_API_URL}/Invitados`; //anadido
     const reservasUrl = `${process.env.REACT_APP_API_URL}/Reservas`; //anadido
-    const solicitudesUrl = `${process.env.REACT_APP_API_URL}/Suscriptiones`; //anadido
+    const solicitudesUrl = `${process.env.REACT_APP_API_URL}/suscripcions`; //anadido
     const reclamosUrl = `${process.env.REACT_APP_API_URL}/Reclamos`; //anadido
     const planesUrl = `${process.env.REACT_APP_API_URL}/Plans`; //anadido
     const fetchWrapper = useFetchWrapper();
