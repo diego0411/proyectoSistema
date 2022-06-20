@@ -19,10 +19,7 @@ function AddEdit({ history, match }) {
 
     // form validation rules
     const validationSchema = Yup.object().shape({
-        plan: Yup.string()
-            .required('elija su plan'),
-        Renovacion: Yup.string()
-            .required('por fafor elija true o false'),
+        Renovacion: Yup.boolean(),
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -82,7 +79,7 @@ function AddEdit({ history, match }) {
                     <div className="form-row">
                         <div className="form-group col">
                             <label>Renovaciones</label>
-                            <input name="Renovacion" type="checkbox" {...register('Renovacion')} className={`form-control ${errors.Renovacion ? 'is-invalid' : ''}`} />
+                            <input name="Renovacion" type="checkbox" aria-invalid={true} {...register('Renovacion')} className={`form-control ${errors.Renovacion ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.Renovacion?.message}</div>
                         </div>
                     </div>

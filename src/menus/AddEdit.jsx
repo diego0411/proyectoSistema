@@ -55,7 +55,7 @@ function AddEdit({ history, match }) {
     }
 
     function createMenu(data) {
-        data.localId = localStorage.getItem('ide');
+        data.eventoId = localStorage.getItem('ide');
         return userActions.registerMenu(data)
             .then(() => {
                 history.push('/menus');

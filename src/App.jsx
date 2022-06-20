@@ -21,6 +21,8 @@ import { Planes } from "./planes/Planes";
 import { LocalesC } from "./localesC/LocalesC";
 import { EventosC } from "./eventoC/EventosC";
 import { MesasC } from "./mesasC/MesasC";
+import { MenusC } from "./menusC/MenusC";
+import { ItemsC } from "./itemsC/ItemC";
 
 
 export { App };
@@ -42,7 +44,9 @@ function App() {
                     <PrivateRoute path="/eventos" component={Eventos} />
                     <PrivateRoute path="/eventosC" component={EventosC} />
                     <PrivateRoute path="/menus" component={Menus} />
+                    <PrivateRoute path="/menusC" component={MenusC} />
                     <PrivateRoute path="/items" component={Items} />
+                    <PrivateRoute path="/itemsC" component={ItemsC} />
                     <PrivateRoute path="/mesas" component={Mesas} />
                     <PrivateRoute path="/mesasC" component={MesasC} />
                     <PrivateRoute path="/invitados" component={Invitados} />

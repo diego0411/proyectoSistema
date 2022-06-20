@@ -101,27 +101,27 @@ function AddEdit({ history, match }) {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-group col">
-                            <label>nombre</label>
+                            <label>NOMBRE</label>
                             <input name="nombre" type="text" {...register('nombre')} className={`form-control ${errors.nombre ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.nombre?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>fecha</label>
+                            <label>FECHA</label>
                             <input name="fecha" type="text" {...register('fecha')} className={`form-control ${errors.fecha ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.fecha?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>horaInicio</label>
+                            <label>HORA DE INICIO</label>
                             <input name="horaInicio" type="text" {...register('horaInicio')} className={`form-control ${errors.horaInicio ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.horaInicio?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>horaFin</label>
+                            <label>HORA DE FINALIZACION</label>
                             <input name="horaFin" type="text" {...register('horaFin')} className={`form-control ${errors.horaFin ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.horaFin?.message}</div>
                         </div>
                         <div className="form-group col">
-                            <label>cantidad de personas</label>
+                            <label>CUPOS PERMITIDOS</label>
                             <input name="cantidadPersona" type="text" {...register('cantidadPersonas')} className={`form-control ${errors.cantidadPersonas ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.cantidadPersonas?.message}</div>
                         </div>
@@ -131,9 +131,9 @@ function AddEdit({ history, match }) {
                     <div className="form-group">
                         <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
                             {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                            Save
+                            GUARDAR
                         </button>
-                        <Link to="/eventos" className="btn btn-link">Cancel</Link>
+                        <Link to="/eventos" className="btn btn-link">CANCELAR</Link>
                     </div>
                 </form>
             }

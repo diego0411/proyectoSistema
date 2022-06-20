@@ -83,11 +83,6 @@ function AddEdit({ history, match }) {
                             <input name="numeroMesa" type="text" {...register('numeroMesa')} className={`form-control ${errors.numeroMesa ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.numeroMesa?.message}</div>
                         </div>
-                        <div className="form-group col">
-                            <label>localId</label>
-                            <input name="eventoId" type="text" {...register('eventoId')} className={`form-control ${errors.eventoId ? 'is-invalid' : ''}`} />
-                            <div className="invalid-feedback">{errors.eventoId?.message}</div>
-                        </div>
                     </div>
                     <div className="form-group">
                         <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">

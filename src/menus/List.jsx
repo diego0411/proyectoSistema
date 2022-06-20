@@ -13,7 +13,7 @@ function List({ match }) {
     const userActions = useUserActions();
 
     useEffect(() => {
-        userActions.getMenu();
+        userActions.getMenuId(localStorage.getItem('ide'));
 
         return userActions.resetMenus;
 

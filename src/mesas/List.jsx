@@ -13,7 +13,7 @@ function List({ match }) {
     const userActions = useUserActions();
 
     useEffect(() => {
-        userActions.getMesa();
+        userActions.getMesaId(localStorage.getItem('ide'));
 
         return userActions.resetMesas;
 
@@ -29,7 +29,6 @@ function List({ match }) {
                 <tr>
                     <th style={{ width: '30%' }}>mesaId</th>
                     <th style={{ width: '30%' }}>Numero de Mesa</th>
-                    <th style={{ width: '30%' }}>eventoId</th>
                     <th style={{ width: '10%' }}></th>
                 </tr>
                 </thead>
@@ -38,7 +37,6 @@ function List({ match }) {
                     <tr key={mesa.id}>
                         <td>{mesa.id}</td>
                         <td>{mesa.numeroMesa}</td>
-                        <td>{mesa.eventoId}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
                             <Link to={`${path}/edit/${mesa.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
                             <button onClick={() => userActions.deleteMesa(mesa.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={mesa.isDeleting}>

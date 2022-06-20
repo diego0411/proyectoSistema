@@ -12,12 +12,16 @@ function useUserActions () {
     const localesUrl = `${process.env.REACT_APP_API_URL}/Locales`; //anadido
     const localesIdUrl = `${process.env.REACT_APP_API_URL}/Locales/getByUser`; //anadido
     const eventosUrl = `${process.env.REACT_APP_API_URL}/Eventos`; //anadido
+    const eventosIdUrl = `${process.env.REACT_APP_API_URL}/Eventos/getByLocal`; //anadido
     const menusUrl = `${process.env.REACT_APP_API_URL}/Menus`; //anadido
+    const menusIdUrl = `${process.env.REACT_APP_API_URL}/Menus/getByEvento`; //anadido
     const itemsUrl = `${process.env.REACT_APP_API_URL}/Items`; //anadido
+    const itemsIdUrl = `${process.env.REACT_APP_API_URL}/Items/getByMenu`; //anadido
     const mesasUrl = `${process.env.REACT_APP_API_URL}/Mesas`; //anadido
+    const mesasIdUrl = `${process.env.REACT_APP_API_URL}/Menus/getByEvento`; //anadido
     const invitadosUrl = `${process.env.REACT_APP_API_URL}/Invitados`; //anadido
     const reservasUrl = `${process.env.REACT_APP_API_URL}/Reservas`; //anadido
-    const solicitudesUrl = `${process.env.REACT_APP_API_URL}/Suscription`; //anadido
+    const solicitudesUrl = `${process.env.REACT_APP_API_URL}/Suscriptiones`; //anadido
     const reclamosUrl = `${process.env.REACT_APP_API_URL}/Reclamos`; //anadido
     const planesUrl = `${process.env.REACT_APP_API_URL}/Plans`; //anadido
     const fetchWrapper = useFetchWrapper();
@@ -80,9 +84,13 @@ function useUserActions () {
         getLocal, //anadido
         getLocalId, //anadido especial locales segun el usuario
         getEvento, //anadido
+        getEventoId, //anadido especial
         getMenu, //anadido
+        getMenuId, //anadido especial
         getItem, //anadido
+        getItemId, //anadido especial
         getMesa, //anadido
+        getMesaId, //anadido
         getInvitado, //anadido
         getReserva, //anadido
         getSolicitud, //anadido
@@ -238,16 +246,32 @@ function useUserActions () {
         return fetchWrapper.get(eventosUrl).then(setEventos);
     }
     //anadido
+    function getEventoId(id) {
+        return fetchWrapper.get(`${eventosIdUrl}/${id}`).then(setEventos);
+    }
+    //anadido
     function getMenu() {
         return fetchWrapper.get(menusUrl).then(setMenus);
+    }
+    //anadido
+    function getMenuId(id) {
+        return fetchWrapper.get(`${menusIdUrl}/${id}`).then(setMenus);
     }
     //anadido
     function getItem() {
         return fetchWrapper.get(itemsUrl).then(setItems);
     }
     //anadido
+    function getItemId(id) {
+        return fetchWrapper.get(`${itemsIdUrl}/${id}`).then(setItems);
+    }
+    //anadido
     function getMesa() {
         return fetchWrapper.get(mesasUrl).then(setMesas);
+    }
+    //anadido
+    function getMesaId(id) {
+        return fetchWrapper.get(`${mesasIdUrl}/${id}`).then(setMesas);
     }
     //anadido
     function getInvitado() {

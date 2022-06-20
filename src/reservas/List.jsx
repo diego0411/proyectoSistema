@@ -14,7 +14,6 @@ function List({ match }) {
 
     useEffect(() => {
         userActions.getReserva();
-
         return userActions.resetReservas;
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,7 +21,7 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Rservas</h1>
+            <h1>Reservas</h1>
             <Link to={`${path}/add`} className="btn btn-sm btn-success mb-2">Add Reserva</Link>
             <table className="table table-striped">
                 <thead>

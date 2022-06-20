@@ -53,7 +53,7 @@ function Nav() {
                         </Link>
                     </li>}
 
-                    {(role !== null && role == 2) && <li>
+                    {(role !== null && role == 2 || role===1) && <li>
                         <Link to={{pathname: '/localesC'}} className="nav-item nav-link">
                             local disponibles
                         </Link>

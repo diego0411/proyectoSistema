@@ -43,8 +43,8 @@ function List({ match }) {
                         <td>{local.descripcion}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
                             <Link to={`${path}/edit/${local.id}`} className="btn btn-sm btn-primary mr-1">editar</Link>
-                            <Link to="/eventos" className="btn btn-sm btn-primary mr-1">eventos</Link>
-                            <button onClick={() => userActions.delete(local.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={local.isDeleting}>
+                            <Link to="/eventos" onClick={() => userActions.saveData(local.id)} className="btn btn-sm btn-primary mr-1">eventos</Link>
+                            <button onClick={() => userActions.deleteLocal(local.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={local.isDeleting}>
                                 {local.isDeleting
                                     ? <span className="spinner-border spinner-border-sm"></span>
                                     : <span>eliminar</span>

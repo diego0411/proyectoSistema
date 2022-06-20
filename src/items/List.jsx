@@ -13,7 +13,7 @@ function List({ match }) {
     const userActions = useUserActions();
 
     useEffect(() => {
-        userActions.getItem();
+        userActions.getItemId(localStorage.getItem('idm'));
 
         return userActions.resetItems;
 
@@ -30,7 +30,6 @@ function List({ match }) {
                     <th style={{ width: '30%' }}>nombre</th>
                     <th style={{ width: '30%' }}>descripcion</th>
                     <th style={{ width: '30%' }}>precio</th>
-                    <th style={{ width: '30%' }}>menuId</th>
                     <th style={{ width: '10%' }}></th>
                 </tr>
                 </thead>
@@ -40,7 +39,6 @@ function List({ match }) {
                         <td>{item.nombre}</td>
                         <td>{item.descripcion}</td>
                         <td>{item.precio}<label>Bs.</label> </td>
-                        <td>{item.menuId}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
                             <Link to={`${path}/edit/${item.id}`} className="btn btn-sm btn-primary mr-1">edit</Link>
                             <button onClick={() => userActions.deleteItem(item.id)} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={item.isDeleting}>

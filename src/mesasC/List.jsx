@@ -13,7 +13,7 @@ function List({ match }) {
     const userActions = useUserActions();
 
     useEffect(() => {
-        userActions.getMesa();
+        userActions.getMesaId(localStorage.getItem('ide'));
 
         return userActions.resetMesas;
 
@@ -28,7 +28,6 @@ function List({ match }) {
                 <tr>
                     <th style={{ width: '30%' }}>mesaId</th>
                     <th style={{ width: '30%' }}>Numero de Mesa</th>
-                    <th style={{ width: '30%' }}>eventoId</th>
                     <th style={{ width: '10%' }}></th>
                 </tr>
                 </thead>
@@ -37,7 +36,6 @@ function List({ match }) {
                     <tr key={mesa.id}>
                         <td>{mesa.id}</td>
                         <td>{mesa.numeroMesa}</td>
-                        <td>{mesa.eventoId}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>
                             <Link to="/reservas" onClick={() => userActions.saveDataItem(mesa.id)}  className="btn btn-sm btn-primary mr-1">Confirmar Reserva</Link>
                         </td>

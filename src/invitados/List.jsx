@@ -38,7 +38,7 @@ function List({ match }) {
                 {invitados?.map(invitado =>
                     <tr key={invitado.id}>
                         <td>{invitado.nombre}</td>
-                        <td>{invitado.apellido}</td>
+                        <td>{invitado.apellidos}</td>
                         <td>{invitado.ci}</td>
                         <td>{invitado.reservaId}</td>
                         <td style={{ whiteSpace: 'nowrap' }}>

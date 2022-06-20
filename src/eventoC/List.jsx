@@ -26,12 +26,12 @@ function List({ match }) {
 
     return (
         <div>
-            <h1>Eventos Disponibles</h1>
+            <h1>EVENTOS DISPONIBLES</h1>
             <table className="table table-striped">
                 <thead>
                 <tr>
                     <th style={{ width: '30%' }}>eventoId</th>
-                    <th style={{ width: '30%' }}>nombre</th>
+                    <th style={{ width: '30%' }}>nombre del evento</th>
                     <th style={{ width: '30%' }}>fecha</th>
                     <th style={{ width: '30%' }}>hora inicio</th>
                     <th style={{ width: '30%' }}>hora final</th>
@@ -50,8 +50,8 @@ function List({ match }) {
                             <td>{evento.horaFin}</td>
                             <td>{evento.cantidadPersonas}</td>
                             <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link to="/mesas" onClick={() => userActions.saveDataEventos(evento.id)}  className="btn btn-sm btn-primary mr-1">realizar reserva</Link>
-                                <Link to="/menus" onClick={() => userActions.saveDataEventos(evento.id)}  className="btn btn-sm btn-primary mr-1">menus</Link>
+                                <Link to="/mesasC" onClick={() => userActions.saveDataEventos(evento.id)}  className="btn btn-sm btn-primary mr-1">REALIZAR RESERVA</Link>
+                                <Link to="/menusC" onClick={() => userActions.saveDataEventos(evento.id)}  className="btn btn-sm btn-primary mr-1">MENU</Link>
                             </td>
                         </tr>
                     </>
